@@ -5,6 +5,10 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
+// Load Input Validation
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+
 // Load User model
 const User = require("../../models/User");
 
@@ -12,8 +16,12 @@ const User = require("../../models/User");
 // @desc    Register user
 // @access  Public
 router.post("/register", (req, res) => {
-  const errors = {};
+  const { errors, isValid } = validateRegisterInput(req.body);
 
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = "Email already exists";
@@ -45,7 +53,12 @@ router.post("/register", (req, res) => {
 // @desc    Login User / Returning JWT Token
 // @access  Public
 router.post("/login", (req, res) => {
-  const errors = {};
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
   const email = req.body.email;
   const password = req.body.password;
@@ -62,7 +75,7 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // Password Matched
-        const payload = { id: user.id, name: user.name }; // Create JWT Payload
+        const payload = { id: user.id, name: user.name, role: user.role }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
@@ -83,5 +96,21 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+// @route   GET api/users/current
+// @desc    Return current user
+// @access  Private
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email,
+      role: req.user.role
+    });
+  }
+);
 
 module.exports = router;
