@@ -36,3 +36,7 @@ npm run server
 ## API Documentation
 
 To check the API Endpoints please open the `PostManager.postman_collection.json` file using Postman.
+
+### Notes:
+
+- After running this, you can run the [Front End](https://github.com/Kent27/postmanager-frontend) part for complete demonstration
