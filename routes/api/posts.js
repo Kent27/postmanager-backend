@@ -42,6 +42,7 @@ router.get(
 // @access  Private
 router.get("/:id", (req, res) => {
   Post.findById(req.params.id)
+    .populate("user", ["name", "email"])
     .then(post => res.json(post))
     .catch(err =>
       res.status(404).json({ nopostfound: "No post found with that ID" })
@@ -69,7 +70,15 @@ router.post(
       user: req.user.id
     });
 
-    newPost.save().then(post => res.json(post));
+    newPost.save().then(post => {
+      post = post.toJSON();
+      post.user = {
+        _id: post.user,
+        name: req.user.name,
+        email: req.user.email
+      };
+      res.json(post);
+    });
   }
 );
 
