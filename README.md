@@ -1,6 +1,6 @@
 # Post Manager Back End (Using Express and MongoDB)
 
-> Back End API for Post Manager
+> Lightweight Back End Application for Post Manager
 
 ## Requirement
 
