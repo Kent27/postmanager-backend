@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "573d6969-5a20-44ce-8e9b-a2ad15a103fc",
+		"name": "PostManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Endpoint",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-future",
+						"value": "automattician",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Raga Z",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "neanthal@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "worldhello",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "member",
+							"type": "text"
+						},
+						{
+							"key": "password2",
+							"value": "worldhello",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				},
+				"description": "{\n\tname: string,\n\temail: string,\n\tpassword: string,\n\tpassword2: string,\n\trole: string,\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Endpoint",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "kent2797@mailinator.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				},
+				"description": "{\n\temail: string,\n\tpassword: string\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMjlhMGMxY2JkZDQzN2VlM2MyNTM1ZiIsIm5hbWUiOiJrZW50Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTYzMTI1MTU0LCJleHAiOjE1NjMxMjg3NTR9.hoaW4pXlBPY2BFMbGujyuIMLcHH_GGrW8V4LHAp-2z0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "content",
+							"value": "This is content of Post 1",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "New Title 1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/posts/5d2b63a9821c26151a86f4ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"posts",
+						"5d2b63a9821c26151a86f4ee"
+					]
+				},
+				"description": "(Private Route)\n\nparam: id,\n{\n\tcontent: string,\n\ttitle: string\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMjlhMGMxY2JkZDQzN2VlM2MyNTM1ZiIsIm5hbWUiOiJrZW50Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTYzNDQ0MjYyLCJleHAiOjE1NjM0NDc4NjJ9.tcnxtATzVEIQISoWTrPvUWV8MW2jPlnjNa64nncZ7-Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"posts"
+					]
+				},
+				"description": "(Private Route)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Single Post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/posts/5d3039b154eaf14953a1f530",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"posts",
+						"5d3039b154eaf14953a1f530"
+					]
+				},
+				"description": "(Private Route)\n\nparam: id"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMjlhMGMxY2JkZDQzN2VlM2MyNTM1ZiIsIm5hbWUiOiJrZW50Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTYzNDQ0MjYyLCJleHAiOjE1NjM0NDc4NjJ9.tcnxtATzVEIQISoWTrPvUWV8MW2jPlnjNa64nncZ7-Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "My Store",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "once upon a time in a place...",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"posts"
+					]
+				},
+				"description": "(Private Route)\n\n{\n\ttitle:string,\n\tcontent:string\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMjlhMGMxY2JkZDQzN2VlM2MyNTM1ZiIsIm5hbWUiOiJrZW50Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTYzNDQ0MjYyLCJleHAiOjE1NjM0NDc4NjJ9.tcnxtATzVEIQISoWTrPvUWV8MW2jPlnjNa64nncZ7-Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/posts/5d3036296f6fcc461b6be378",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"posts",
+						"5d3036296f6fcc461b6be378"
+					]
+				},
+				"description": "(Private Route)\n\nparam: id"
+			},
+			"response": []
+		}
+	]
+}
